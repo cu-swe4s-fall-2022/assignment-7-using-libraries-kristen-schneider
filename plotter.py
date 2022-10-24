@@ -4,6 +4,14 @@ import matplotlib.pyplot as plt
 
 
 def make_boxplot(file_name, out_png):
+    '''
+    Saves a boxplot for input data file.
+    Input:
+        file_name: input data file
+        out_png: output png file name
+    Output:
+        saves file 'out_png'
+    '''
     iris = pd.read_csv(file_name,  header=None)
     iris.columns = ['sepal_width',
                     'sepal_length',
@@ -17,6 +25,17 @@ def make_boxplot(file_name, out_png):
     plt.savefig(out_png)
 
 def make_scatterplot(file_name, x_attribute, y_attribute):
+    '''
+    Saves a scatter plot for input data file.
+    Input:
+        file_name: input data file
+        x_attribute: attribute to be plotted on x-axis
+            of scatter plot
+        y_attribute: attribute to be plotted on y-axis
+            of scatter plot    
+    Output:
+        saves file 'x_attribute_v_y_attribute.png'
+    '''
     iris = pd.read_csv(file_name,  header=None)
     iris.columns = ['sepal_width',
                     'sepal_length',
@@ -35,6 +54,18 @@ def make_scatterplot(file_name, x_attribute, y_attribute):
     plt.savefig(out_png)
 
 def combine_plots(file_name, x_attribute, y_attribute):
+    '''
+    Saves a figure where left figure is boxplot
+    and right figure is scatter plot.
+    Input:
+        file_name: input data file
+        x_attribute: attribute to be plotted on x-axis
+            of scatter plot
+        y_attribute: attribute to be plotted on y-axis
+            of scatter plot    
+    Output:
+        saves file 'multi_panel_figure.png'
+    '''
     iris = pd.read_csv(file_name,  header=None)
     iris.columns = ['sepal_width',
                     'sepal_length',
@@ -46,14 +77,19 @@ def combine_plots(file_name, x_attribute, y_attribute):
     
     axes[0].boxplot(iris[iris.columns[0:4]], labels=iris.columns[0:4])
     axes[0].set_ylabel('cm')
+    axes[0].spines['top'].set_visible(False)
+    axes[0].spines['right'].set_visible(False)
+
+    for species in set(iris['iris_species']):
+        iris_species_data = iris[iris['iris_species'] == species]
+        axes[1].scatter(iris_species_data[x_attribute],
+                        iris_species_data[y_attribute],
+                        label=species)
     
-    # for species in set(iris['iris_species']):
-    #     iris_species_data = iris[iris['iris_species'] == species]
-    #     axes[1].scatter(iris_species_data[x_attribute],
-    #                     iris_species_data[y_attribute],
-    #                     label=species)
-    # axes[1].set_xlabel(x_attribute + ' (cm)')
-    # axes[1].set_ylabel(y_attribute + ' (cm)')
+    axes[1].set_xlabel(x_attribute + ' (cm)')
+    axes[1].set_ylabel(y_attribute + ' (cm)')
+    axes[1].spines['top'].set_visible(False)
+    axes[1].spines['right'].set_visible(False)
     
     out_png = 'multi_panel_figure.png'
     plt.savefig(out_png)

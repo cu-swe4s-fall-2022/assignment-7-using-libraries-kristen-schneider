@@ -25,6 +25,5 @@ def main():
         plotter.combine_plots(args.data_file, args.attribute1, args.attribute2)
     
     
-    
 if __name__ == '__main__':
     main()

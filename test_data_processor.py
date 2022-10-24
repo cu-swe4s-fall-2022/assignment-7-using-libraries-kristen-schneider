@@ -69,15 +69,19 @@ class TestDataProcessor(unittest.TestCase):
         self.assertNotEqual(iris_dimensions[1], 0)
         
         good_dimensions = dp.get_file_dimensions(good_data)  
-        # positive assertions on iris data
+        # positive assertions on setup data
         self.assertEqual(good_dimensions[0], 5)
         self.assertEqual(good_dimensions[1], 10)
-        # negative assertions on iris data
+        # negative assertions on setup data
         self.assertNotEqual(good_dimensions[0], 0)
         self.assertNotEqual(good_dimensions[1], 0)
         
-        # raise errors
+        # raise errors for bad data
         self.assertRaises(Exception, dp.get_file_dimensions, bad_data)
+        
+    def test_write_matrix_to_file(self):
+        # raise errors for bad input
+        self.assertRaises(Exception, dp.write_matrix_to_file, 0, 0, 'out.txt')
    
      
 

@@ -81,8 +81,10 @@ def write_matrix_to_file(num_rows, num_columns, file_name):
     # raises exception if dimensions are <= 0
     if num_rows <= 0:
         raise Exception('number of rows must be greater than 0')
+        sys.exit(1)
     elif num_columns <= 0:
         raise Exception('number of columns must be greater than 0')
+        sys.exit(1)
     else:
         random_matrix = get_random_matrix(num_rows, num_columns)
         o = open(file_name, 'w')

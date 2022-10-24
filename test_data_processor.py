@@ -81,7 +81,9 @@ class TestDataProcessor(unittest.TestCase):
         
     def test_write_matrix_to_file(self):
         # raise errors for bad input
-        self.assertRaises(Exception, dp.write_matrix_to_file, 0, 0, 'out.txt')
+        self.assertRaises(Exception, dp.write_matrix_to_file, 0, 0, 'out.csv')
+        self.assertRaises(Exception, dp.write_matrix_to_file, -1, 10, 'out.csv')
+        self.assertRaises(Exception, dp.write_matrix_to_file, 10, -1, 'out.csv')
    
      
 

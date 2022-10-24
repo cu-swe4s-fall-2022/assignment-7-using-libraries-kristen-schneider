@@ -22,8 +22,8 @@ def main():
         file_dimensions = dp.get_file_dimensions(args.in_file)
         print(file_dimensions)
     # write 
-    elif args.mode == 'write':
-        
+    elif args.mode == 'out':
+        dp.write_matrix_to_file(int(args.rows), int(args.cols), args.out_file)
     
     
     

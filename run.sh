@@ -7,5 +7,7 @@ python test_data_processor.py
 bash test_process.sh
 
 # unit tests for plotter
+python test_plotter.py
 
 # functional tests for plotter
+bash test_plotter.sh

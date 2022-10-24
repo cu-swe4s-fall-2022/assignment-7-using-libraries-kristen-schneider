@@ -21,7 +21,7 @@ def main():
     elif args.mode == 'scatter':
         plotter.make_scatterplot(args.data_file, args.attribute1, args.attribute2)
     # both figures 
-    elif args.mode == 'both':
+    elif args.mode == 'multi':
         plotter.combine_plots(args.data_file, args.attribute1, args.attribute2)
     
     

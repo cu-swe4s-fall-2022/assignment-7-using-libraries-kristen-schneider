@@ -1,6 +1,7 @@
 # Your code to create majestic plots goes in here!
 import pandas as pd
 import matplotlib.pyplot as plt
+import sys
 
 
 def make_boxplot(file_name, out_png):
@@ -12,7 +13,11 @@ def make_boxplot(file_name, out_png):
     Output:
         saves file 'out_png'
     '''
-    iris = pd.read_csv(file_name,  header=None)
+    try:
+        iris = pd.read_csv(file_name,  header=None)
+    except FileNotFoundError:
+        raise FileNotFoundError(file_name + ' not found.')
+        sys.exit(1)
     iris.columns = ['sepal_width',
                     'sepal_length',
                     'petal_width',
@@ -36,7 +41,11 @@ def make_scatterplot(file_name, x_attribute, y_attribute):
     Output:
         saves file 'x_attribute_v_y_attribute.png'
     '''
-    iris = pd.read_csv(file_name,  header=None)
+    try:
+        iris = pd.read_csv(file_name,  header=None)
+    except FileNotFoundError:
+        raise FileNotFoundError(file_name + ' not found.')
+        sys.exit(1)
     iris.columns = ['sepal_width',
                     'sepal_length',
                     'petal_width',
@@ -66,7 +75,11 @@ def combine_plots(file_name, x_attribute, y_attribute):
     Output:
         saves file 'multi_panel_figure.png'
     '''
-    iris = pd.read_csv(file_name,  header=None)
+    try:
+        iris = pd.read_csv(file_name,  header=None)
+    except FileNotFoundError:
+        raise FileNotFoundError(file_name + ' not found.')
+        sys.exit(1)
     iris.columns = ['sepal_width',
                     'sepal_length',
                     'petal_width',

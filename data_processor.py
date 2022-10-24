@@ -45,16 +45,22 @@ def get_file_dimensions(file_name):
     for line in f:
         L = line.strip().split(',')
         if len(L) > 1:
+            # get number of columns from first line
             if num_cols == 0:
+                # if there is a trailing comma, don't add last element
                 if L[-1] == '':
-                    print('here')
-                    num_cols = len(L) -1
+                    num_cols = len(L) - 1
                 else:
                     num_cols = len(L)
             num_rows += 1   
-            
+                        
             # check for consistency in number of columns
             num_cols_curr = len(L)
+            # if there is a trailing comma, don't add last element
+            if L[-1] == '':
+                    num_cols_curr = len(L) - 1
+            else:
+                    num_cols_curr = len(L)
             if num_cols_curr != num_cols:
                 raise Exception('Number of columns is inconsistent in the file.')
                 sys.exit(1)
@@ -63,4 +69,26 @@ def get_file_dimensions(file_name):
     return file_dimensions
 
 def write_matrix_to_file(num_rows, num_columns, file_name):
-	return None
+    '''
+    Create an N x M matrix of random numbers from a uniform distribution
+    in the range of (0,1] using get_random_matrix function
+    and writes it to a csv file.
+    Input:
+        num_rows: integer value, number of rows
+        num_columns: integer value, number of colums
+        file_name: output csv file
+    '''
+    # raises exception if dimensions are <= 0
+    if num_rows <= 0:
+        raise Exception('number of rows must be greater than 0')
+    elif num_columns <= 0:
+        raise Exception('number of columns must be greater than 0')
+    else:
+        random_matrix = get_random_matrix(num_rows, num_columns)
+        o = open(file_name, 'w')
+        for r in random_matrix:
+            for c in r:
+                line = str(c) + ','
+                o.write(line)
+            o.write('\n')
+        o.close()

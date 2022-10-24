@@ -18,7 +18,12 @@ run basic_scatterplot python plot.py --mode scatter --data_file iris.data --attr
 FILE='petal_width_v_petal_length.png'
 assert_exit_code 0
 rm $FILE
-run bad_scatterplot python plot.py --mode scatter --data_file bad_iris.data --attribute1 petal_width --attribute2 petal_length
+run bad_scatterplot1 python plot.py --mode scatter --data_file bad_iris.data --attribute1 petal_width --attribute2 petal_length
+if [ ! -f "$FILE" ]; then
+    echo "$FILE does not exist."
+fi
+assert_exit_code 1
+run bad_scatterplot2 python plot.py --mode scatter --data_file iris.data --attribute1 bad_attribute --attribute2 petal_length
 if [ ! -f "$FILE" ]; then
     echo "$FILE does not exist."
 fi

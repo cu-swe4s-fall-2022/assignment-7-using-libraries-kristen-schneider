@@ -51,16 +51,19 @@ def make_scatterplot(file_name, x_attribute, y_attribute):
                     'petal_width',
                     'petal_length',
                     'iris_species']
-    for species in set(iris['iris_species']):
-        iris_species_data = iris[iris['iris_species'] == species]
-        sp = plt.scatter(iris_species_data[x_attribute],
-                        iris_species_data[y_attribute],
-                        label=species)
-    out_png = x_attribute + '_v_' + y_attribute + '.png'
-    plt.legend()
-    plt.xlabel(x_attribute + ' (cm)')
-    plt.ylabel(y_attribute + ' (cm)')
-    plt.savefig(out_png)
+    try:
+        for species in set(iris['iris_species']):
+            iris_species_data = iris[iris['iris_species'] == species]
+            sp = plt.scatter(iris_species_data[x_attribute],
+                            iris_species_data[y_attribute],
+                            label=species)
+        out_png = x_attribute + '_v_' + y_attribute + '.png'
+        plt.legend()
+        plt.xlabel(x_attribute + ' (cm)')
+        plt.ylabel(y_attribute + ' (cm)')
+        plt.savefig(out_png)
+    except KeyError:
+        raise KeyError('One of the input attributes does not exist')
 
 def combine_plots(file_name, x_attribute, y_attribute):
     '''
@@ -93,16 +96,19 @@ def combine_plots(file_name, x_attribute, y_attribute):
     axes[0].spines['top'].set_visible(False)
     axes[0].spines['right'].set_visible(False)
 
-    for species in set(iris['iris_species']):
-        iris_species_data = iris[iris['iris_species'] == species]
-        axes[1].scatter(iris_species_data[x_attribute],
-                        iris_species_data[y_attribute],
-                        label=species)
-    
-    axes[1].set_xlabel(x_attribute + ' (cm)')
-    axes[1].set_ylabel(y_attribute + ' (cm)')
-    axes[1].spines['top'].set_visible(False)
-    axes[1].spines['right'].set_visible(False)
+    try:
+        for species in set(iris['iris_species']):
+            iris_species_data = iris[iris['iris_species'] == species]
+            axes[1].scatter(iris_species_data[x_attribute],
+                            iris_species_data[y_attribute],
+                            label=species)
+
+        axes[1].set_xlabel(x_attribute + ' (cm)')
+        axes[1].set_ylabel(y_attribute + ' (cm)')
+        axes[1].spines['top'].set_visible(False)
+        axes[1].spines['right'].set_visible(False)
+    except KeyError:
+        raise KeyError('One of the input attributes does not exist')
     
     out_png = 'multi_panel_figure.png'
     plt.savefig(out_png)

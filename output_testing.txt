@@ -1,0 +1,85 @@
+Unit tests for data processor
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.005s
+
+OK
+Functional tests for data processor
+
+basic_matrix1 ran in 1 sec with 0/1 lines to STDERR/OUT
+ PASS EXIT CODE (LINE 7)
+ PASS STDOUT CONTAINS "0" (LINE 8)
+
+basic_matrix2 ran in 0 sec with 0/1 lines to STDERR/OUT
+ PASS EXIT CODE (LINE 10)
+ PASS STDOUT CONTAINS "3" (LINE 11)
+
+zeros_matrix1 ran in 0 sec with 8/0 lines to STDERR/OUT
+ PASS EXIT CODE (LINE 14)
+
+zeros_matrix2 ran in 1 sec with 8/0 lines to STDERR/OUT
+ PASS EXIT CODE (LINE 16)
+
+negative_matrix1 ran in 0 sec with 8/0 lines to STDERR/OUT
+ PASS EXIT CODE (LINE 18)
+
+negative_matrix1 ran in 1 sec with 8/0 lines to STDERR/OUT
+ PASS EXIT CODE (LINE 20)
+
+iris_dimensions ran in 0 sec with 0/1 lines to STDERR/OUT
+ PASS EXIT CODE (LINE 26)
+ PASS STDOUT CONTAINS "(150, 5)" (LINE 27)
+
+bad_dimensions ran in 0 sec with 8/0 lines to STDERR/OUT
+ PASS EXIT CODE (LINE 30)
+
+basic_write ran in 0 sec with 0/0 lines to STDERR/OUT
+ PASS EXIT CODE (LINE 36)
+
+bad_write ran in 1 sec with 8/0 lines to STDERR/OUT
+ PASS EXIT CODE (LINE 40)
+out.csv does not exist.
+
+sshtest v0.1.5
+
+13        Tests
+0         Failures
+13        Successes
+Unit tests for plotting
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.122s
+
+OK
+Functional tests for plotting
+
+basic_boxplot ran in 1 sec with 0/0 lines to STDERR/OUT
+ PASS EXIT CODE (LINE 8)
+
+bad_boxplot ran in 1 sec with 27/0 lines to STDERR/OUT
+ PASS EXIT CODE (LINE 11)
+iris_boxplot.png does not exist.
+
+basic_scatterplot ran in 2 sec with 0/0 lines to STDERR/OUT
+ PASS EXIT CODE (LINE 19)
+
+bad_scatterplot1 ran in 1 sec with 27/0 lines to STDERR/OUT
+petal_width_v_petal_length.png does not exist.
+ PASS EXIT CODE (LINE 25)
+
+bad_scatterplot2 ran in 1 sec with 30/0 lines to STDERR/OUT
+petal_width_v_petal_length.png does not exist.
+ PASS EXIT CODE (LINE 30)
+
+basic_multiplot ran in 1 sec with 0/0 lines to STDERR/OUT
+ PASS EXIT CODE (LINE 35)
+
+bad_multiplot ran in 1 sec with 27/0 lines to STDERR/OUT
+multi_panel_figure.png does not exist.
+ PASS EXIT CODE (LINE 41)
+
+sshtest v0.1.5
+
+7         Tests
+0         Failures
+7         Successes
